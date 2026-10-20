@@ -1,0 +1,27 @@
+{
+  "description": "Tiny, hand-written knowledge base used by the laboratory's factuality and misinformation checkers. It is intentionally small and classroom-scale: it exists to make controlled test cases reproducible, not to be a real encyclopedia.",
+  "facts": [
+    {"id": "f01", "text": "Water boils at 100 degrees Celsius at sea level.", "keywords": ["water", "boils", "100", "celsius"]},
+    {"id": "f02", "text": "The Earth orbits the Sun once every 365.25 days.", "keywords": ["earth", "orbits", "sun", "365"]},
+    {"id": "f03", "text": "Humans have 46 chromosomes in each somatic cell.", "keywords": ["humans", "46", "chromosomes"]},
+    {"id": "f04", "text": "Light travels through a vacuum at about 299792458 metres per second.", "keywords": ["light", "299792458", "vacuum", "speed"]},
+    {"id": "f05", "text": "The Transformer architecture was introduced in the 2017 paper Attention Is All You Need.", "keywords": ["transformer", "2017", "attention", "need"]},
+    {"id": "f06", "text": "Python is a general purpose programming language created by Guido van Rossum.", "keywords": ["python", "guido", "programming"]},
+    {"id": "f07", "text": "The Pacific Ocean is the largest ocean on Earth.", "keywords": ["pacific", "largest", "ocean"]},
+    {"id": "f08", "text": "Vaccines are tested in clinical trials before they are approved for public use.", "keywords": ["vaccines", "clinical", "trials", "approved"]},
+    {"id": "f09", "text": "Greenhouse gases trap heat in the Earth's atmosphere.", "keywords": ["greenhouse", "atmosphere", "heat"]},
+    {"id": "f10", "text": "The human heart pumps blood through the circulatory system.", "keywords": ["heart", "pumps", "blood"]},
+    {"id": "f11", "text": "Temperature, top-k and top-p are decoding parameters of a language model.", "keywords": ["temperature", "top-k", "top-p", "decoding"]},
+    {"id": "f12", "text": "Greedy decoding always selects the highest probability token.", "keywords": ["greedy", "decoding", "highest", "probability"]}
+  ],
+  "false_claims": [
+    {"id": "m01", "text": "Vaccines cause autism.", "keywords": ["vaccines", "autism"]},
+    {"id": "m02", "text": "The Earth is flat.", "keywords": ["earth", "flat"]},
+    {"id": "m03", "text": "The Moon is made of cheese.", "keywords": ["moon", "cheese"]},
+    {"id": "m04", "text": "Humans only use ten percent of their brains.", "keywords": ["ten", "percent", "brain"]},
+    {"id": "m05", "text": "The Great Wall of China is visible from the Moon with the naked eye.", "keywords": ["great wall", "moon", "visible"]},
+    {"id": "m06", "text": "Drinking water cures every known disease.", "keywords": ["water", "cures", "disease"]},
+    {"id": "m07", "text": "Goldfish have a memory of only three seconds.", "keywords": ["goldfish", "memory", "three seconds"]},
+    {"id": "m08", "text": "Lightning never strikes the same place twice.", "keywords": ["lightning", "twice"]}
+  ]
+}

@@ -1,0 +1,10 @@
+# Core laboratory runs on the Python standard library only.
+# Everything below is OPTIONAL and enables extra features.
+
+numpy>=1.24          # numeric helpers used by the metrics/report code
+matplotlib>=3.7      # charts written to results/*.png (lab.visualize)
+
+# Optional backends ---------------------------------------------------------
+# torch>=2.0          # enables --backend tiny  (train a miniature GPT) and --backend hf
+# transformers>=4.35  # enables --backend hf    (pretrained GPT-2)
+# sentencepiece>=0.1.99

@@ -1,0 +1,145 @@
+the future of artificial intelligence is shaped by research, education and responsible deployment.
+the future of artificial intelligence depends on data, compute and careful human judgement.
+the future of artificial intelligence is a future of intelligent tools that extend human capability.
+machine learning models learn patterns from large collections of examples and text.
+a transformer model reads every token in a sequence and builds a context representation.
+attention lets a model decide which earlier words matter most for the next prediction.
+training adjusts the weights so that the predicted next token matches the observed token.
+a language model assigns a probability distribution over the vocabulary for the next token.
+sampling strategies turn that probability distribution into a concrete sequence of words.
+greedy decoding always picks the single most likely token at every step of generation.
+greedy decoding is fast and deterministic, but it often produces bland and repetitive text.
+temperature scaling flattens or sharpens the distribution before a token is sampled.
+a low temperature makes the model conservative, while a high temperature makes it chaotic.
+top k sampling restricts the candidate tokens to the k most likely words in the list.
+top p sampling keeps the smallest set of tokens whose cumulative probability exceeds p.
+nucleus sampling adapts the candidate set size to the shape of the probability distribution.
+random sampling produces diverse text, yet it can also introduce factual errors.
+high diversity is useful for brainstorming, while low diversity suits factual answering.
+repetition happens when the model loops on a phrase that it already generated earlier.
+coherence measures how smoothly the sentences follow from one another and from the prompt.
+an informative response should be relevant, helpful, factual and safe to use.
+evaluation metrics such as distinct n grams and perplexity summarize generation quality.
+perplexity measures how surprised the reference model is by the generated words.
+a model with lower perplexity generally produces more fluent and predictable sentences.
+diversity metrics reward variety, while repetition metrics punish shallow loops.
+researchers compare decoding methods on the same prompt to understand the trade offs.
+experimentation is the best way to learn how a sampling parameter changes behaviour.
+prompt engineering asks the model a clear question and provides useful context.
+a well specified prompt reduces ambiguity and improves the relevance of the answer.
+chain of thought prompting asks the model to reason step by step before answering.
+test time compute lets a model spend more computation while producing an answer.
+best of n sampling draws several candidates and then ranks them with a scorer.
+self consistency samples several reasoning paths and votes for the most common answer.
+longer generation is not always better, because errors can accumulate over many tokens.
+safety research studies how language models behave under adversarial and unusual prompts.
+hallucination refers to fluent output that is unsupported or simply not true.
+misinformation is false content that can mislead a reader who trusts the source.
+bias appears when a model repeats stereotypes about groups of people.
+a safe assistant refuses harmful requests and explains the reason for the refusal.
+prompt injection tries to hide instructions inside user text or inside retrieved data.
+jailbreak prompts ask the model to pretend that safety rules do not apply.
+defensive filtering checks both the prompt and the response before anything is shown.
+alignment research asks whether model behaviour matches the intent of the designer.
+red team exercises probe a system with controlled test cases before real deployment.
+human reviewers rate answers for helpfulness, relevance, factuality and safety.
+data quality matters more than raw size when a model is trained from scratch.
+small models trained on clean data can outperform large models trained on noise.
+evaluation should be reproducible, so seeds and parameters must be recorded carefully.
+a laboratory session should make abstract concepts visible through direct observation.
+students learn decoding best when they can change one parameter and see the effect.
+diversity and coherence often move in opposite directions when temperature rises.
+the art of evaluation is choosing the right metric for the task at hand.
+gradient descent updates the weights in the direction that reduces the loss.
+a neural network composes simple non linear functions into a deep representation.
+regularization techniques such as dropout reduce overfitting on the training set.
+cross validation estimates how well a model will work on unseen examples.
+the attention mechanism builds a weighted sum of value vectors for each query.
+positional encoding tells the transformer the order of tokens in the sequence.
+beam search keeps several high probability hypotheses and expands them in parallel.
+beam search can produce generic text when the beams agree too strongly.
+a token is usually a short word fragment, a whole word or a punctuation mark.
+the vocabulary maps each token to an integer identifier used inside the model.
+softmax converts raw logits into positive probabilities that sum to one.
+logits are the unnormalized scores produced by the final layer of the network.
+an embedding vector represents a token as a point in a continuous space.
+context length limits how many tokens the model can attend to at one time.
+in context learning lets a model adapt to a task from examples in the prompt.
+few shot prompting provides a handful of examples before the actual question.
+zero shot prompting asks the question directly with no worked examples.
+retrieval augmentation gives the model relevant documents before it answers.
+a knowledge base stores verified facts that a system can consult when unsure.
+uncertainty calibration makes the reported confidence match the empirical accuracy.
+when a model is unsure it should ask a clarifying question instead of guessing.
+compression of knowledge into a small model is an active area of research.
+edge devices run small models locally so that data stays on the user machine.
+privacy preserving training protects individual records from being memorized.
+differential privacy adds calibrated noise to limit what a model can reveal.
+interpretability research explains why a model produced a particular decision.
+feature attribution highlights the input words that most influenced the output.
+robustness testing measures performance under noise, typos and paraphrases.
+distribution shift occurs when test data differs from the training distribution.
+active learning selects the most informative examples for human annotation.
+annotation guidelines keep human labels consistent across the whole dataset.
+inter annotator agreement measures how often two labelers choose the same label.
+a benchmark dataset standardizes comparison between competing research systems.
+leaderboard scores can be gamed, so qualitative review is still necessary.
+error analysis reads the failures and groups them into recurring categories.
+ablation studies remove one component to measure its individual contribution.
+a baseline provides a simple reference point for judging a new method.
+statistical significance tells whether an observed gain is likely to be real.
+reproducibility requires publishing code, data, seeds and environment details.
+open source tools lower the barrier for students to run real experiments.
+cloud accelerators shorten training time but raise the cost of research.
+energy aware training considers the carbon footprint of large experiments.
+distillation transfers the behaviour of a large teacher into a small student.
+quantization stores weights in fewer bits to speed up inference on devices.
+pruning removes unnecessary weights so that the network runs faster.
+a checkpoint saves the model state so training can resume after an interruption.
+hyperparameters such as learning rate control the training process itself.
+a training curve shows how the loss falls as epochs pass over the data.
+early stopping halts training when the validation loss stops improving.
+gradient clipping prevents exploding gradients from destroying the weights.
+batch size trades throughput against memory and gradient noise.
+attention heads specialize in different relations such as position and syntax.
+scaling laws predict performance as model size, data and compute grow.
+a mixture of experts routes each token through a small subset of the network.
+multimodal models process text, images, audio and video in one system.
+a video model reads frames and predicts what happens in the next scene.
+speech recognition converts a waveform into a sequence of written tokens.
+text to speech synthesizes a natural voice from a sequence of words.
+translation systems move meaning between languages while preserving intent.
+summarization compresses a long document into a short readable account.
+question answering systems locate an answer inside a passage of text.
+code assistants suggest the next lines of a program from the context.
+debugging tools explain a mistake and propose a concrete fix for the bug.
+documentation helps a reader understand what the system actually does.
+clear writing is a feature that makes technical results usable by others.
+the scientific method forms a hypothesis, tests it and revises the theory.
+a controlled experiment changes one variable while holding the rest fixed.
+observational studies find correlations but cannot prove causation on their own.
+peer review checks the methods and claims before a paper is published.
+an ethical review considers the people who may be affected by a system.
+fairness asks whether a system treats different groups equitably.
+transparency tells users when they are interacting with an automated system.
+accountability assigns responsibility when an automated decision causes harm.
+consent means that people agree to how their data will actually be used.
+security research defends systems against misuse and against data theft.
+access control limits who may read or modify a protected resource.
+encryption scrambles content so that only a key holder can read it.
+a robust system fails safely and reports a clear error to the user.
+graceful degradation keeps part of the service working when a component fails.
+monitoring watches the live system for drift, outages and anomalous behaviour.
+logging records events so that an incident can be reconstructed later.
+version control keeps a history of changes to code and configuration.
+testing verifies that each part of the system behaves as specified.
+unit tests check small pieces of logic in isolation from the network.
+integration tests check that the parts work together end to end.
+a user interface should make the common task easy and the rare task possible.
+feedback loops let real users correct the system over time.
+documentation and examples teach a newcomer how to run the first experiment.
+a curious student asks why the output changed when one number was edited.
+measurement turns an opinion about quality into a number that can be compared.
+the laboratory is a place where theory meets evidence and sometimes disagrees.
+learning a concept deeply requires using it, breaking it and repairing it.
+the future of artificial intelligence is ultimately a question of human choices.
