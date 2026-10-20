@@ -10,6 +10,7 @@ A hands-on, educational laboratory for exploring transformer-based text generati
 - [Quick Start](#quick-start)
 - [Usage](#usage)
   - [Common Commands](#common-commands)
+  - [Command Reference](#command-reference-copy-paste-ready)
   - [Advanced Options](#advanced-options)
 - [Architecture](#architecture)
 - [Decoding Strategies](#decoding-strategies)
@@ -55,6 +56,43 @@ cd Transformer-Text-Generation-and-Sampling-Laboratory
 
 The laboratory runs out-of-the-box with the n-gram backend. No pip install required for core functionality.
 
+### Step-by-Step Setup (Recommended)
+
+1. **Clone the repository** and enter the project folder:
+
+   ```bash
+   git clone https://github.com/dhonith12/Transformer-Text-Generation-and-Sampling-Laboratory.git
+   cd Transformer-Text-Generation-and-Sampling-Laboratory
+   ```
+
+2. **Create a virtual environment** (isolates the project's packages):
+
+   ```bash
+   python -m venv .venv
+   ```
+
+3. **Activate the environment:**
+
+   ```bash
+   # Windows (PowerShell)
+   .venv\Scripts\Activate.ps1
+
+   # Windows (cmd.exe)
+   .venv\Scripts\activate.bat
+
+   # macOS / Linux
+   source .venv/bin/activate
+   ```
+
+4. **(Optional) install the extras** you want — see
+   [Optional Features](#optional-features).
+
+5. **Run a first experiment** to confirm everything works:
+
+   ```bash
+   python run_lab.py compare --backend ngram --prompt "Once upon a time" --tokens 60
+   ```
+
 ### Optional Features
 
 To enable additional backends and visualization:
@@ -72,14 +110,46 @@ For neural network backends:
 pip install torch>=2.0 transformers>=4.35  # Enables hf and tiny backends
 ```
 
+### Troubleshooting
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| `'python' is not recognized` | Python not on `PATH` | Install Python 3.9+, or use `py` / the full interpreter path. |
+| Script not found / `runlab.py` | Wrong filename | The driver is **`run_lab.py`** (with an underscore). |
+| `ModuleNotFoundError: lab` | Run from the wrong folder | `cd` into the project root so `run_lab.py` and `lab/` sit together. |
+| A command seems to hang | `auto` backend selected HuggingFace GPT-2 | Add `--backend ngram`, or wait for weights to download. |
+| `argument --strategy: invalid choice` | Misspelled strategy | Valid names: `greedy`, `random`, `temperature`, `topk`, `topp`, `topk_topp`, `min_p`. |
+| `ModuleNotFoundError: matplotlib` | Plots requested but not installed | `pip install matplotlib`, or pass `--no-plots`. |
+
 ## Quick Start
+
+> **Tip:** On every example below, add `--backend ngram` to force the
+> dependency-free offline model. Without it the default `auto` backend may
+> pick HuggingFace GPT-2 (if `torch`/`transformers` are installed) and be
+> much slower or try to download weights.
+
+### 0. Activate the virtual environment
+
+All examples assume the CLI is invoked from the project root with the
+virtual environment active:
+
+```bash
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+
+# macOS / Linux
+source .venv/bin/activate
+```
+
+If you have not created one yet, see
+[Installation](#installation) for the step-by-step setup.
 
 ### 1. Compare All Decoding Strategies
 
 See how different sampling methods behave on the default prompt:
 
 ```bash
-python run_lab.py compare
+python run_lab.py compare --backend ngram --prompt "Once upon a time" --tokens 60
 ```
 
 ### 2. Run a Parameter Sweep
@@ -87,36 +157,48 @@ python run_lab.py compare
 Explore how temperature affects generation quality:
 
 ```bash
-python run_lab.py sweep --param temperature --values 0.1,0.6,1.0,1.4,2.0
+python run_lab.py sweep --backend ngram --param temperature --values 0.1,0.3,0.6,0.9,1.2,1.5,2.0
 ```
 
-### 3. Generate a Full Lab Report
+### 3. Analyze a Single Generation
 
-Run all experiments and produce a comprehensive markdown report with charts:
+Get a detailed metric breakdown for one configuration:
 
 ```bash
-python run_lab.py report
+python run_lab.py analyze --backend ngram --strategy topp --top-p 0.9
 ```
 
-Results are saved to `results/report.md` and `results/*.json`.
-
-### 4. Interactive Chat
-
-Experiment interactively with live metrics:
-
-```bash
-python run_lab.py chat
-```
-
-Switch strategies on-the-fly by typing `greedy`, `topp`, `temperature`, etc.
-
-### 5. Safety Testing
+### 4. Safety Testing
 
 Compare unguarded vs guarded behavior on controlled test cases:
 
 ```bash
-python run_lab.py safety
+python run_lab.py safety --backend ngram --strategy topk_topp
 ```
+
+### 5. Generate a Full Lab Report
+
+Run all experiments and produce a comprehensive markdown report with charts:
+
+```bash
+python run_lab.py report --backend ngram --no-plots
+```
+
+Results are saved to `results/report.md` and `results/*.json`.
+Drop `--no-plots` (after `pip install matplotlib`) to also emit PNG charts.
+
+### 6. Interactive Chat
+
+Experiment interactively with live metrics:
+
+```bash
+python run_lab.py chat --backend ngram
+```
+
+Switch strategies on-the-fly by typing `greedy`, `topp`, `temperature`, etc.
+
+> **Note:** The strategy name for top-k + top-p is `topk_topp` (with an
+> underscore). Values like `topktopp` are not accepted by `--strategy`.
 
 ## Usage
 
@@ -132,6 +214,57 @@ python run_lab.py safety
 | `report` | End-to-end lab report with all experiments | `python run_lab.py report --prompt "The future of AI is"` |
 | `chat` | Interactive exploration loop with live metrics | `python run_lab.py chat --strategy temperature --temperature 0.7` |
 | `train` | Train the tiny GPT from scratch | `python run_lab.py train --steps 500 --batch-size 32` |
+
+### Command Reference (copy-paste ready)
+
+These commands are verified against the current code. Add `--backend ngram`
+for instant, offline runs.
+
+```bash
+# Compare decoding strategies (greedy, temperature, top-k, top-p, min-p, ...)
+python run_lab.py compare --backend ngram --prompt "Once upon a time" --tokens 60
+
+# Sweep a single sampling parameter
+python run_lab.py sweep --backend ngram --param temperature --values 0.1,0.3,0.6,0.9,1.2,1.5,2.0
+
+# Detailed analysis of one generation
+python run_lab.py analyze --backend ngram --strategy topp --top-p 0.9
+
+# Safety test suite
+python run_lab.py safety --backend ngram --strategy topk_topp
+
+# Test-time compute (best-of-N, token budgets, self-consistency)
+python run_lab.py compute --backend ngram --n-values 1,2,4,8,16 --vote "What is 2+2?"
+
+# Full markdown report (no charts)
+python run_lab.py report --backend ngram --no-plots
+
+# Full markdown report with charts (requires matplotlib)
+python run_lab.py report --backend ngram
+
+# Interactive chat
+python run_lab.py chat --backend ngram
+```
+
+Optional: charts and richer backends.
+
+```bash
+pip install numpy matplotlib          # enables results/*.png charts
+pip install torch transformers        # enables --backend hf and --backend tiny
+
+# Train the tiny transformer, then use it
+python run_lab.py train --steps 300
+python run_lab.py compare --backend tiny --checkpoint artifacts/tiny_gpt.pt
+```
+
+Where results go:
+
+| Artifact | Location |
+|---|---|
+| JSON experiment outputs | `results/*.json` |
+| Charts | `results/*.png` |
+| Full report | `results/report.md` |
+| Tiny GPT weights | `artifacts/tiny_gpt.pt` |
 
 ### Advanced Options
 
@@ -263,7 +396,9 @@ Transformer-Text-Generation-and-Sampling-Laboratory/
 │   ├── test_metrics.py     # Metric behavior
 │   └── test_safety.py      # Safety detectors and guards
 ├── docs/                   # Documentation
-│   └── Building_the_LLM_Lab.pdf
+│   ├── Building_the_LLM_Lab.pdf   # step-by-step build + usage guide (regenerable)
+│   └── Building_the_LLM_Lab.txt   # plain-text source for the PDF
+│   └── build_pdf.py               # regenerates the PDF from the .txt source
 ├── results/                # Auto-generated outputs (JSON, PNG, MD reports)
 ├── run_lab.py              # CLI entry point (all commands)
 ├── requirements.txt        # Optional dependencies

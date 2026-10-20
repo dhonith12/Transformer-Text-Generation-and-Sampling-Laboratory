@@ -1,0 +1,28 @@
+# Virtual environments -------------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# Python caches and build artifacts ------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Trained model weights -------------------------------------------------------
+artifacts/
+
+# Generated experiment outputs ------------------------------------------------
+results/
+
+# Editor / OS noise -----------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
